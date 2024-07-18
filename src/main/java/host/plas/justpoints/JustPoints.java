@@ -12,9 +12,13 @@ import host.plas.bou.PluginBase;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.java.JavaPlugin;
+import tv.quaint.objects.handling.derived.IPluginEventable;
+
+import java.io.File;
 
 @Getter @Setter
-public final class JustPoints extends PluginBase {
+public final class JustPoints extends PluginBase implements IPluginEventable {
     @Getter @Setter
     private static JustPoints instance;
 
@@ -33,6 +37,9 @@ public final class JustPoints extends PluginBase {
     @Getter @Setter
     private static PointsCMD pointsCMD;
 
+    @Getter @Setter
+    private static MyEventable myEventable;
+
     public JustPoints() {
         super();
     }
@@ -41,6 +48,8 @@ public final class JustPoints extends PluginBase {
     public void onBaseEnabled() {
         // Plugin startup logic
         setInstance(this);
+
+        setMyEventable(new MyEventable(this));
 
         setMainConfig(new MainConfig());
         setMainDatabase(new PointsOperator(getMainConfig().buildConnectorSet()));
@@ -64,5 +73,24 @@ public final class JustPoints extends PluginBase {
         getSyncTimer().cancel();
 
         PointsManager.getLoadedPlayers().forEach(PointPlayer::saveAndUnload);
+    }
+
+    @Getter @Setter
+    public static class MyEventable implements IPluginEventable {
+        private final JavaPlugin plugin;
+
+        public MyEventable(JavaPlugin plugin) {
+            this.plugin = plugin;
+        }
+
+        @Override
+        public File getDataFolder() {
+            return plugin.getDataFolder();
+        }
+
+        @Override
+        public String getIdentifier() {
+            return plugin.getName();
+        }
     }
 }

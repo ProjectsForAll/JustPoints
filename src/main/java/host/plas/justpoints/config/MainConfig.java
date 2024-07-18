@@ -7,7 +7,7 @@ import tv.quaint.storage.resources.flat.simple.SimpleConfiguration;
 
 public class MainConfig extends SimpleConfiguration {
     public MainConfig() {
-        super("config.yml", JustPoints.getInstance(), true);
+        super("config.yml", JustPoints.getMyEventable(), true);
     }
 
     @Override
