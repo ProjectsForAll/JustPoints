@@ -1,5 +1,8 @@
 package host.plas.justpoints.data.sql;
 
+import host.plas.bou.sql.ConnectorSet;
+import host.plas.bou.sql.DBOperator;
+import host.plas.bou.sql.DatabaseType;
 import host.plas.justpoints.data.PointPlayer;
 import host.plas.justpoints.utils.MessageUtils;
 import lombok.Getter;

@@ -1,8 +1,8 @@
 package host.plas.justpoints.config;
 
+import host.plas.bou.sql.ConnectorSet;
+import host.plas.bou.sql.DatabaseType;
 import host.plas.justpoints.JustPoints;
-import host.plas.justpoints.data.sql.ConnectorSet;
-import host.plas.justpoints.data.sql.DatabaseType;
 import tv.quaint.storage.resources.flat.simple.SimpleConfiguration;
 
 public class MainConfig extends SimpleConfiguration {
