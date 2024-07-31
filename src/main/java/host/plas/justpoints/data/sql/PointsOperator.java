@@ -3,8 +3,8 @@ package host.plas.justpoints.data.sql;
 import host.plas.bou.sql.ConnectorSet;
 import host.plas.bou.sql.DBOperator;
 import host.plas.bou.sql.DatabaseType;
+import host.plas.justpoints.JustPoints;
 import host.plas.justpoints.data.PointPlayer;
-import host.plas.justpoints.utils.MessageUtils;
 import lombok.Getter;
 import lombok.Setter;
 import tv.quaint.objects.AtomicString;
@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @Getter @Setter
 public class PointsOperator extends DBOperator {
     public PointsOperator(ConnectorSet connectorSet) {
-        super(connectorSet, "JustPoints");
+        super(connectorSet, JustPoints.getInstance());
     }
 
     @Override
@@ -61,7 +61,7 @@ public class PointsOperator extends DBOperator {
                         stmt.setString(3, player.getUsername());
                     }
                 } catch (Exception e) {
-                    MessageUtils.logError("Error setting statement values!");
+                    JustPoints.getInstance().logSevere("Error setting statement values!");
                     e.printStackTrace();
                 }
             });
@@ -79,7 +79,7 @@ public class PointsOperator extends DBOperator {
                             stmt.setDouble(4, value);
                         }
                     } catch (Exception e) {
-                        MessageUtils.logError("Error setting statement values!");
+                        JustPoints.getInstance().logSevere("Error setting statement values!");
                         e.printStackTrace();
                     }
                 });
@@ -98,7 +98,7 @@ public class PointsOperator extends DBOperator {
                         stmt.setLong(3, lastEdited);
                     }
                 } catch (Exception e) {
-                    MessageUtils.logError("Error setting statement values!");
+                    JustPoints.getInstance().logSevere("Error setting statement values!");
                     e.printStackTrace();
                 }
             });
@@ -125,7 +125,7 @@ public class PointsOperator extends DBOperator {
                 try {
                     stmt.setString(1, uuid);
                 } catch (Exception e) {
-                    MessageUtils.logError("Error setting statement values!");
+                    JustPoints.getInstance().logSevere("Error setting statement values!");
                     e.printStackTrace();
                 }
             }, set -> {
@@ -135,10 +135,10 @@ public class PointsOperator extends DBOperator {
 
                         username.set(user);
                     } else {
-                        MessageUtils.logError("Could not find username with uuid " + uuid + "!");
+                        JustPoints.getInstance().logSevere("Could not find username with uuid " + uuid + "!");
                     }
                 } catch (Exception e) {
-                    MessageUtils.logError("Error executing query!");
+                    JustPoints.getInstance().logSevere("Error executing query!");
                     e.printStackTrace();
                 }
             });
@@ -149,7 +149,7 @@ public class PointsOperator extends DBOperator {
                 try {
                     stmt.setString(1, uuid);
                 } catch (Exception e) {
-                    MessageUtils.logError("Error setting statement values!");
+                    JustPoints.getInstance().logSevere("Error setting statement values!");
                     e.printStackTrace();
                 }
             }, set -> {
@@ -160,12 +160,12 @@ public class PointsOperator extends DBOperator {
                             double pts = set.getDouble("Points");
                             points.put(key, pts);
                         } catch (Exception e) {
-                            MessageUtils.logError("Error parsing points!");
+                            JustPoints.getInstance().logSevere("Error parsing points!");
                             e.printStackTrace();
                         }
                     }
                 } catch (Exception e) {
-                    MessageUtils.logError("Error executing query!");
+                    JustPoints.getInstance().logSevere("Error executing query!");
                     e.printStackTrace();
                 }
             });
@@ -191,7 +191,7 @@ public class PointsOperator extends DBOperator {
                 try {
                     stmt.setString(1, uuid);
                 } catch (Exception e) {
-                    MessageUtils.logError("Error setting statement values!");
+                    JustPoints.getInstance().logSevere("Error setting statement values!");
                     e.printStackTrace();
                 }
             }, set -> {
@@ -201,10 +201,10 @@ public class PointsOperator extends DBOperator {
 
                         lastEdited.set(last);
                     } else {
-                        MessageUtils.logError("Could not find player with uuid " + uuid + "!");
+                        JustPoints.getInstance().logSevere("Could not find player with uuid " + uuid + "!");
                     }
                 } catch (Exception e) {
-                    MessageUtils.logError("Error executing query!");
+                    JustPoints.getInstance().logSevere("Error executing query!");
                     e.printStackTrace();
                 }
             });
@@ -220,7 +220,7 @@ public class PointsOperator extends DBOperator {
             try {
                 stmt.setString(1, key);
             } catch (Exception e) {
-                MessageUtils.logError("Error setting statement values!");
+                JustPoints.getInstance().logSevere("Error setting statement values!");
                 e.printStackTrace();
             }
         });
@@ -234,7 +234,7 @@ public class PointsOperator extends DBOperator {
                 stmt.setString(1, key);
                 stmt.setString(2, player.getIdentifier());
             } catch (Exception e) {
-                MessageUtils.logError("Error setting statement values!");
+                JustPoints.getInstance().logSevere("Error setting statement values!");
                 e.printStackTrace();
             }
         });

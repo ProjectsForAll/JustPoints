@@ -1,5 +1,6 @@
 package host.plas.justpoints;
 
+import host.plas.bou.BetterPlugin;
 import host.plas.justpoints.commands.PointsCMD;
 import host.plas.justpoints.config.MainConfig;
 import host.plas.justpoints.data.PointPlayer;
@@ -8,13 +9,12 @@ import host.plas.justpoints.events.MainListener;
 import host.plas.justpoints.managers.PointsManager;
 import host.plas.justpoints.papi.PointsExpansion;
 import host.plas.justpoints.timers.SyncTimer;
-import host.plas.bou.PluginBase;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
 
 @Getter @Setter
-public final class JustPoints extends PluginBase {
+public final class JustPoints extends BetterPlugin {
     @Getter @Setter
     private static JustPoints instance;
 

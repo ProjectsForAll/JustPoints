@@ -2,7 +2,6 @@ package host.plas.justpoints.data;
 
 import host.plas.justpoints.JustPoints;
 import host.plas.justpoints.managers.PointsManager;
-import host.plas.justpoints.utils.MessageUtils;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
@@ -105,7 +104,7 @@ public class PointPlayer implements Identifiable {
 
                 this.loadedAtLeastOnce = true;
             } catch (Exception e) {
-                MessageUtils.logError("Error augmenting player data for " + getIdentifier());
+                JustPoints.getInstance().logSevere("Error augmenting player data for " + getIdentifier());
                 e.printStackTrace();
             }
         });
