@@ -3,7 +3,6 @@ version: '${version}'
 main: '${main}'
 authors:
   - Drak
-authors: [ Drak ]
 depend:
   - BukkitOfUtils
   - PlaceholderAPI

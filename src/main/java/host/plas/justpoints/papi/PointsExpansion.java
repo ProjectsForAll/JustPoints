@@ -13,7 +13,7 @@ import tv.quaint.utils.StringUtils;
 public class PointsExpansion extends PlaceholderExpansion {
     @Override
     public @NotNull String getIdentifier() {
-        return "points";
+        return "jpoints";
     }
 
     @Override
