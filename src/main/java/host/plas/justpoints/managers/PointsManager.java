@@ -45,9 +45,11 @@ public class PointsManager {
         }
 
         PointPlayer newPlayer = createNewPlayer(uuid);
-        newPlayer = newPlayer.augment(JustPoints.getMainDatabase().loadPlayer(uuid));
+        newPlayer.load();
 
-        loadPlayer(newPlayer);
+        newPlayer = newPlayer.augment(JustPoints.getMainDatabase().loadPlayer(uuid), true);
+
+        newPlayer.onceLoaded(PointPlayer::save);
 
         return newPlayer;
     }

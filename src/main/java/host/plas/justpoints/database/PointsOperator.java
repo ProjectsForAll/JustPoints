@@ -1,5 +1,6 @@
-package host.plas.justpoints.data.sql;
+package host.plas.justpoints.database;
 
+import gg.drak.thebase.objects.AtomicString;
 import host.plas.bou.sql.ConnectorSet;
 import host.plas.bou.sql.DBOperator;
 import host.plas.bou.sql.DatabaseType;
@@ -7,7 +8,6 @@ import host.plas.justpoints.JustPoints;
 import host.plas.justpoints.data.PointPlayer;
 import lombok.Getter;
 import lombok.Setter;
-import tv.quaint.objects.AtomicString;
 
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;

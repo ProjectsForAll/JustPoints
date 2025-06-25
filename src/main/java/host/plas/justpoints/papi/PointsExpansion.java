@@ -1,5 +1,6 @@
 package host.plas.justpoints.papi;
 
+import gg.drak.thebase.utils.StringUtils;
 import host.plas.justpoints.JustPoints;
 import host.plas.justpoints.data.PointPlayer;
 import host.plas.justpoints.managers.PointsManager;
@@ -8,7 +9,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import tv.quaint.utils.StringUtils;
 
 public class PointsExpansion extends PlaceholderExpansion {
     @Override

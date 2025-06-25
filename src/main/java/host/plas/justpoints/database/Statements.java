@@ -1,4 +1,4 @@
-package host.plas.justpoints.data.sql;
+package host.plas.justpoints.database;
 
 import host.plas.bou.sql.ConnectorSet;
 import lombok.Getter;

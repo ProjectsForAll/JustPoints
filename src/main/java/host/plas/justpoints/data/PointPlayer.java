@@ -1,12 +1,13 @@
 package host.plas.justpoints.data;
 
+import gg.drak.thebase.async.AsyncUtils;
+import gg.drak.thebase.objects.Identifiable;
 import host.plas.justpoints.JustPoints;
 import host.plas.justpoints.managers.PointsManager;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
-import tv.quaint.objects.Identifiable;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -24,6 +25,8 @@ public class PointPlayer implements Identifiable {
     private long lastEditedMillis;
 
     private boolean loadedAtLeastOnce;
+
+    private boolean fullyLoaded = false;
 
     public PointPlayer(String identifier, String username, ConcurrentSkipListMap<String, Double> points) {
         this.identifier = identifier;
@@ -79,12 +82,18 @@ public class PointPlayer implements Identifiable {
         setLastEditedMillis(System.currentTimeMillis());
     }
 
-    public PointPlayer augment(CompletableFuture<Optional<PointPlayer>> future) {
-        CompletableFuture.runAsync(() -> {
-            try {
-                Optional<PointPlayer> p = future.join();
-                if (p.isEmpty()) return;
-                PointPlayer player = p.get();
+    public PointPlayer augment(CompletableFuture<Optional<PointPlayer>> future, boolean isGet) {
+        this.fullyLoaded = false;
+
+        future.whenComplete( (result, exception) -> {
+            if (exception != null) {
+                JustPoints.getInstance().logSevere("Error augmenting player data for " + getIdentifier(), exception);
+                this.fullyLoaded = true;
+                return;
+            }
+
+            if (result.isPresent()) {
+                PointPlayer player = result.get();
 
                 if (loadedAtLeastOnce) {
                     player.getPoints().forEach((key, value) -> {
@@ -103,10 +112,13 @@ public class PointPlayer implements Identifiable {
                 this.lastEditedMillis = player.getLastEditedMillis();
 
                 this.loadedAtLeastOnce = true;
-            } catch (Exception e) {
-                JustPoints.getInstance().logSevere("Error augmenting player data for " + getIdentifier());
-                e.printStackTrace();
+            } else {
+                if (! isGet) {
+                    save();
+                }
             }
+
+            this.fullyLoaded = true;
         });
 
         return this;
@@ -130,5 +142,19 @@ public class PointPlayer implements Identifiable {
 
     public void action(Consumer<PointPlayer> action) {
         action.accept(this);
+    }
+
+    public PointPlayer waitUntilFullyLoaded() {
+        while (! this.fullyLoaded) {
+            Thread.onSpinWait();
+        }
+
+        return this;
+    }
+
+    public void onceLoaded(Consumer<PointPlayer> action) {
+        AsyncUtils.executeAsync(() -> {
+            action.accept(waitUntilFullyLoaded());
+        });
     }
 }

@@ -1,9 +1,9 @@
 package host.plas.justpoints.config;
 
+import gg.drak.thebase.storage.resources.flat.simple.SimpleConfiguration;
 import host.plas.bou.sql.ConnectorSet;
 import host.plas.bou.sql.DatabaseType;
 import host.plas.justpoints.JustPoints;
-import tv.quaint.storage.resources.flat.simple.SimpleConfiguration;
 
 public class MainConfig extends SimpleConfiguration {
     public MainConfig() {

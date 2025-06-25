@@ -4,7 +4,7 @@ import host.plas.bou.BetterPlugin;
 import host.plas.justpoints.commands.PointsCMD;
 import host.plas.justpoints.config.MainConfig;
 import host.plas.justpoints.data.PointPlayer;
-import host.plas.justpoints.data.sql.PointsOperator;
+import host.plas.justpoints.database.PointsOperator;
 import host.plas.justpoints.events.MainListener;
 import host.plas.justpoints.managers.PointsManager;
 import host.plas.justpoints.papi.PointsExpansion;
