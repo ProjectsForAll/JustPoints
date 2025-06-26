@@ -34,7 +34,7 @@ public class SyncTimer extends BaseRunnable {
                 try {
                     long dbLastEdited = JustPoints.getMainDatabase().getLastEditedMillis(player.getIdentifier()).join();
                     if (dbLastEdited > player.getLastEditedMillis()) {
-                        player.augment(JustPoints.getMainDatabase().loadPlayer(player.getIdentifier()));
+                        player.augment(JustPoints.getMainDatabase().loadPlayer(player.getIdentifier()), true);
                     } else {
                         player.save();
                     }
