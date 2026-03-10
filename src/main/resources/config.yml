@@ -1,20 +1,44 @@
-# Database settings.
-database:
-  type: SQLITE # MYSQL or SQLITE
-  host: "localhost" # Only for MySQL
-  port: "3306" # Only for MySQL
-  database: "database" # Only for MySQL
-  username: "username" # Only for MySQL
-  password: "password" # Only for MySQL
-  options: "useSSL=false" # Only for MySQL
-  table-prefix: "pnts_"
-  sqlite-file: "points.db" # Only for SQLite
+# Configurations for Spawn.
+spawn:
+  # Teleport to spawn on join.
+  on-join: false
+  # Spawn command.
+  command:
+    # If you want to go to main spawn by default.
+    main-by-default: true
 
-points:
-  default: 0.0 # Is a double (decimal) value
-  on-join:
-    load: true # If true, will load the player's points when they join the server
-  on-quit:
-    save: true # If true, will save the player's points when they quit the server
-    dispose: true # If true, will dispose the player's profile in memory when they quit the server
-  save-interval: 5 # In minutes
+# Configurations for flight.
+flight:
+  # Flight toggling.
+  toggle:
+    # Put players on the ground when they toggle flight off.
+    put-on-ground: true
+    # Check if player is able to fly on join.
+    check-on-join: true
+    # Check if player is able to fly on join.
+    check-on-leave: false
+    # Check if player is able to fly on move.
+    check-on-move: false
+  # Check permissions.
+  permissions:
+  - justessentials.command.fly
+
+# Configurations for heal.
+heal:
+  # Bad effects to remove.
+  bad-effects:
+    - BLINDNESS
+    - CONFUSION
+    - HUNGER
+    - POISON
+    - SLOW
+    - SLOW_DIGGING
+    - WEAKNESS
+    - WITHER
+    - UNLUCK
+
+# Configurations for feed.
+feed:
+  # Bad effects to remove.
+  bad-effects:
+    - HUNGER

@@ -1,0 +1,20 @@
+# The plugin's database settings.
+# The type of database to use.
+# MYSQL = MySQL
+# SQLITE = SQLite
+# No other types are supported at this time.
+type: 'SQLITE'
+# The host or IP of the MySQL server.
+host: 'localhost'
+# The port of the MySQL server.
+port: 3306
+# The username to use to connect to the MySQL server.
+username: 'root'
+# The password to use to connect to the MySQL server.
+password: 'password'
+# The prefix to use for the tables in the database.
+table-prefix: 'jess_'
+# The name of the database to use (when using MySQL).
+database: 'jessentials'
+# The name of the SQLite file to use (when using SQLite).
+sqlite-file-name: 'jessentials.db'

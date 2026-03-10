@@ -5,12 +5,40 @@ authors:
   - Drak
 depend:
   - BukkitOfUtils
+softdepend:
   - PlaceholderAPI
 folia-supported: true
 
 commands:
-  points:
-    description: Main command for JustPoints
-    permission: justpoints.command.points
-    usage: /<command>
-    aliases: [pnts, point, pnt]
+  feed:
+    description: Feed yourself.
+    permission: justessentials.command.feed
+    aliases: []
+  fly:
+    description: Toggle flight.
+    permission: justessentials.command.fly
+    aliases: []
+  heal:
+    description: Heal yourself.
+    permission: justessentials.command.heal
+    aliases: []
+  setspawn:
+    description: Set the spawn location.
+    permission: justessentials.command.setspawn
+    aliases: []
+  spawn:
+    description: Teleport to spawn.
+    permission: justessentials.command.spawn
+    aliases: []
+  gamemode:
+    description: Change your gamemode.
+    permission: justessentials.command.gamemode
+    aliases: [gm]
+  teleporthere:
+    description: Teleport a player to you.
+    permission: justessentials.command.tphere
+    aliases: [tphere, tph]
+  teleport:
+    description: Teleport to a player.
+    permission: justessentials.command.teleport
+    aliases: [tp]
