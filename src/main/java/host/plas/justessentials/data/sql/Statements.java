@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:src/main/java/host/plas/justessentials/data/sql/Statements.java
 package host.plas.justessentials.data.sql;
+========
+package host.plas.justpoints.database;
+>>>>>>>> 492b91a3d6a70e7bac4ce38e2cb761a888ed2d5e:src/main/java/host/plas/justpoints/database/Statements.java
 
 import host.plas.bou.sql.ConnectorSet;
 import lombok.Getter;
